@@ -32,7 +32,6 @@ jobs:
       # tag:
       # target:
       # extra-build-args:
-
       # hadolint-configfile:
       # hadolint-error-level:
       # hadolint-output-format:
