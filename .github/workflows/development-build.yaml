@@ -38,6 +38,7 @@ jobs:
       # hadolint-configfile:
       # hadolint-error-level:
       # hadolint-output-format:
+
       # hadolint-version:
       # hadolint-advanced-security:
       # op-version:
