@@ -37,6 +37,7 @@ jobs:
       # extra-build-args:
       # hadolint-configfile:
       # hadolint-error-level:
+
       # hadolint-output-format:
       # hadolint-version:
       # hadolint-advanced-security:
