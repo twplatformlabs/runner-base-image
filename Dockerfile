@@ -10,6 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
 
+# hadolint ignore=DL3008,SC2174,DL4001
 RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/90circleci && \
     echo 'DPkg::Options "--force-confnew";' >> /etc/apt/apt.conf.d/90circleci && apt-get update && \
     apt-get install --no-install-recommends -y \
@@ -47,14 +48,14 @@ RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/90circleci && \
     download_version="$(curl -s https://api.github.com/repos/powerman/dockerize/tags | jq -r '.[0].name' | head -n 1)" && \
     curl -SL --output dockerize "https://github.com/powerman/dockerize/releases/download/$download_version/dockerize-$download_version-linux-amd64" && \
     chmod +x dockerize && mv dockerize /usr/local/bin && \
-    curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && apt-get install -y git-lfs && \
+    curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && apt-get install --no-install-recommends -y git-lfs && \
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg && \
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null && \
     mkdir -p -m 755 /etc/apt/keyrings && \
     wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null && \
     chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg && \
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null && \
-    wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg && \
+    wget -qO- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg && \
     echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list && apt-get update && \
     apt-get install --no-install-recommends -y \
             gh \
