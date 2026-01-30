@@ -27,7 +27,6 @@ jobs:
       registry-username: $GHCR_LOGIN
       registry-password: $GHCR_PASSWORD
       skip-hadolint: "false"
-      dockerfile-path: "."
     secrets:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
 
