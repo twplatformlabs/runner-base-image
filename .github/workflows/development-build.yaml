@@ -24,8 +24,6 @@ jobs:
       working-directory: "."
       before-build: "true"
       registry: ghcr.io
-      registry-username: $GHCR_LOGIN
-      registry-password: $GHCR_PASSWORD
       skip-hadolint: "false"
     secrets:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}

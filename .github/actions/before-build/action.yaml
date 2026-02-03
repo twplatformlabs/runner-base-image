@@ -21,14 +21,18 @@ runs:
       with:
         export-env: true
       env:
+        DOCKER_LOGIN: op://platform/svc-dockerhub/username
+        DOCKER_PASSWORD: op://platform/svc-dockerhub/password
+
+    - name: set dockerhub access for scout
+      uses: twplatformlabs/gha-tools-actions/confirm-registry@main
+
+    - name: load slack-bot credentials
+      uses: 1password/load-secrets-action@v3
+      with:
+        export-env: true
+      env:
         SLACK_BOT_TOKEN: op://platform/svc-slack/platform-slack-bot-token
         GH_TOKEN: op://platform/svc-github/access-token
-        GHCR_LOGIN: op://platform/svc-github/username
-        GHCR_PASSWORD: op://platform/svc-github/access-token
-
-    - name: debug
-      shell: bash
-      run: |
-        echo ${GHCR_LOGIN:0:5}
-        echo ${GHCR_PASSWORD:0:5}
-        echo ${GH_TOKEN:0:5}}
+        DOCKER_LOGIN: op://platform/svc-github/username
+        DOCKER_PASSWORD: op://platform/svc-github/access-token
