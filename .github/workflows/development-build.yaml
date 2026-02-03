@@ -24,6 +24,7 @@ jobs:
       before-build: "true"
       registry: ghcr.io
       skip-hadolint: "false"
+      scout-version: "latest"
     secrets:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
 
