@@ -21,7 +21,6 @@ jobs:
     name: runner-base-image development build
     uses: twplatformlabs/gha-tools-workflows/.github/workflows/runner-dev-build.yaml@main
     with:
-      working-directory: "."
       before-build: "true"
       registry: ghcr.io
       skip-hadolint: "false"
