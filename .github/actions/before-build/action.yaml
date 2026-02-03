@@ -36,3 +36,6 @@ runs:
         GH_TOKEN: op://platform/svc-github/access-token
         DOCKER_LOGIN: op://platform/svc-github/username
         DOCKER_PASSWORD: op://platform/svc-github/access-token
+        CREATED: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+        REVISION: ${GITHUB_SHA}
+        UBUNTU_BASE: $(head -n 1 test/Dockerfile)
