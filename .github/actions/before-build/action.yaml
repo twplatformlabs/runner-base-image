@@ -36,6 +36,8 @@ runs:
         GH_TOKEN: op://platform/svc-github/access-token
         DOCKER_LOGIN: op://platform/svc-github/username
         DOCKER_PASSWORD: op://platform/svc-github/access-token
+        SNYK_API: op://platform/svc-snyk/api-token
+        SNYK_ORGANIZATION: op://platform/svc-snyk/organization
 
     - name: Set buildx LABELS
       shell: bash
