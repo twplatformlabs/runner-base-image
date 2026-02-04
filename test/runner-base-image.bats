@@ -25,11 +25,11 @@ setup() {
 }
 
 @test "docker scout installed" {
-  run bash -c "docker exec ${TEST_CONTAINER} gzip --help"
+  run bash -c "docker exec ${TEST_CONTAINER} docker scout --help"
   [[ "${output}" =~ "Command line tool for Docker Scout" ]]
 }
 
 @test "teller installed" {
-  run bash -c "docker exec ${TEST_CONTAINER} ls /etc/ssl/certs/"
+  run bash -c "docker exec ${TEST_CONTAINER} teller --help"
   [[ "${output}" =~ "Usage: teller" ]]
 }
