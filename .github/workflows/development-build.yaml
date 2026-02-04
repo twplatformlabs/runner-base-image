@@ -25,8 +25,9 @@ jobs:
       registry: ghcr.io
       skip-hadolint: "false"
       scout-version: "latest"
-      snyk-scan: "true"
-      snyk-version: "latest"
+      bats-test: "true"
+      bats-version: "latest"
+      bats-test-path: "test/runner-base-image.bats"
     secrets:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
 

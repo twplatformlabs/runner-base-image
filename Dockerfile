@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM mirror.gcr.io/ubuntu:24.04
 
 SHELL ["/bin/bash", "-exo", "pipefail", "-c"]
 COPY cli-plugins.json /tmp/config.json
