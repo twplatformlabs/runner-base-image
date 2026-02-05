@@ -26,19 +26,11 @@ runs:
         DOCKER_LOGIN: op://platform/svc-github/username
         DOCKER_PASSWORD: op://platform/svc-github/access-token
         COSIGN_PASSWORD: op://platform/svc-cosign/passphrase
-        COSIGN_SIGN_KEY: op://platform/svc-cosign-private-key/notesPlain
-        COSIGN_VERIFY_KEY: op://platform/svc-cosign-public-key/notesPlain
 
     - name: Set signing key files
       shell: bash
       run: |
-        cat << 'EOF' > cosign.key
-        ${COSIGN_SIGN_KEY}
-        EOF
-        cat << 'EOF' > cosign.pub
-        ${COSIGN_VERIFY_KEY}
-        EOF
-        # printf '%s' "$COSIGN_SIGN_KEY" > cosign.key
-        # printf '%s' "$COSIGN_VERIFY_KEY" > cosign.pub
-        echo "pubic key"
-        cat cosign.pub
+        echo "op://platform/svc-cosign-private-key/notesPlain" > cosign.key.tpl
+        echo "op://platform/svc-cosign-public-key/notesPlain" > cosign.pub.tpl
+        op inject -i cosign.key.tpl -o cosign.key
+        op inject -i cosign.pub.tpl -o cosign.pub
