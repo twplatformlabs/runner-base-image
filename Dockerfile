@@ -3,10 +3,10 @@ FROM mirror.gcr.io/ubuntu:24.04
 SHELL ["/bin/bash", "-exo", "pipefail", "-c"]
 COPY cli-plugins.json /tmp/config.json
 
+ARG IMAGE_RELEASE
 ENV DEBIAN_FRONTEND=noninteractive \
     TERM=dumb \
     PAGER=cat \
-    LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
 
@@ -43,6 +43,7 @@ RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/90circleci && \
             gzip \
             bzip2 \
             zip && \
+    locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8 && \
     add-apt-repository ppa:git-core/ppa && apt-get update && \
     apt-get install --no-install-recommends -y git && \
     download_version="$(curl -s https://api.github.com/repos/powerman/dockerize/tags | jq -r '.[0].name' | head -n 1)" && \
