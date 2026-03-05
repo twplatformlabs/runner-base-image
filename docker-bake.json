@@ -43,6 +43,9 @@
         "org.opencontainers.image.title": "runner-base-image",
         "org.opencontainers.image.description": "Ubuntu-based GitHub runner image containing organizational base packages",
         "org.opencontainers.image.base.name": "${UBUNTU_BASE}"
+      },
+      "args": {
+        "IMAGE_RELEASE": "ghcr.io/twplatformlabs/runner-base-image:${TAG}"
       }
     }
   }

@@ -16,7 +16,7 @@ runs:
 
   steps:
 
-    - name: load slack-bot credentials
+    - name: load dodckerhub credentials
       uses: 1password/load-secrets-action@v3
       with:
         export-env: true

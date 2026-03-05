@@ -81,4 +81,5 @@ RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/90circleci && \
     bash -c "echo 'allow-loopback-pinentry' > /root/.gnupg/gpg-agent.conf" && \
     bash -c "echo 'pinentry-mode loopback' > /root/.gnupg/gpg.conf" && \
     chmod 700 /root/.gnupg && chmod 600 /root/.gnupg/* && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    apt-get clean && rm -rf /var/lib/apt/lists/* && \
+    echo "${IMAGE_RELEASE}" > /etc/image-release
