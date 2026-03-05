@@ -1,5 +1,5 @@
 {
   "cliPluginsExtraDirs": [
-    "/home/circleci/.docker/cli-plugins"
+    "/home/root/.docker/cli-plugins"
   ]
 }
