@@ -4,7 +4,8 @@ SHELL ["/bin/bash", "-exo", "pipefail", "-c"]
 COPY cli-plugins.json /tmp/config.json
 
 ARG IMAGE_RELEASE
-ENV DEBIAN_FRONTEND=noninteractive \
+ENV DOCKER_CONFIG=/usr/libexec/docker \
+    DEBIAN_FRONTEND=noninteractive \
     TERM=dumb \
     PAGER=cat \
     LANGUAGE=en_US:en \
@@ -69,8 +70,8 @@ RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/90circleci && \
     download_url="https://github.com/docker/scout-cli/releases/download/${download_version}/docker-scout_${download_version:1}_linux_amd64.tar.gz" && \
     curl -fL -O "${download_url}" && \
     tar -xzf "docker-scout_${download_version:1}_linux_amd64.tar.gz" docker-scout && rm "docker-scout_${download_version:1}_linux_amd64.tar.gz" && \
-    mkdir -p "$HOME/.docker/cli-plugins" && mv docker-scout "$HOME/.docker/cli-plugins/docker-scout" && \
-    mv /tmp/config.json "$HOME/.docker/config.json" && \
+    mv docker-scout "/usr/libexec/docker/cli-plugins/docker-scout" && \
+    mv /tmp/config.json "/usr/libexec/docker/config.json" && \
     current_version="v$(curl https://app-updates.agilebits.com/check/1/0/CLI2/en/2.0.0/N -s | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')" && \
     curl -sSfo op.zip "https://cache.agilebits.com/dist/1P/op2/pkg/$current_version/op_linux_amd64_$current_version.zip" && \
     unzip -od /usr/local/bin/ op.zip && rm op.zip && \
