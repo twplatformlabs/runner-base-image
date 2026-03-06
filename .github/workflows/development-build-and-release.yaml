@@ -24,10 +24,8 @@ jobs:
       before-build: "true"
       registry: ghcr.io
       skip-hadolint: "false"
-      skip-cve-scan: "true"
-      # scout-version: "latest"
+      # skip-cve-scan: "true"
       bats-test: "true"
-      # bats-version: "latest"
       bats-test-path: "test/runner-base-image.bats"
     secrets:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
@@ -40,8 +38,6 @@ jobs:
     with:
       before-release: "true"
       registry: ghcr.io
-      #oras-version: "1.3.0"
-      #cosign-version: "v3.0.4"
       include-latest: "true"
       sign-manifest: "true"
     secrets:
