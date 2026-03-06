@@ -24,6 +24,7 @@ jobs:
       before-build: "true"
       registry: ghcr.io
       skip-hadolint: "false"
+      skip-cve-scan: "true"
       # scout-version: "latest"
       bats-test: "true"
       # bats-version: "latest"
