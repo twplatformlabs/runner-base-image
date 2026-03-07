@@ -1,0 +1,20 @@
+# yamllint disable rule:line-length
+# yamllint disable rule:truthy
+---
+name: runner-base-image development build and release
+
+on:
+  schedule:
+    - cron: '0 1 5 * *'  # monthly on the 5th
+
+permissions:
+  contents: write
+
+jobs:
+
+  trigger-monthly-release:
+    name: runner-base-image monthly release
+    uses: twplatformlabs/gha-tools-workflows/.github/workflows/runner-auto-release.yaml@main
+    with:
+      committer-email: twplatformlabs@gmail.com
+      committer-name: twplatformlabs-sa
