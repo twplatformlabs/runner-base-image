@@ -19,3 +19,4 @@ jobs:
     with:
       committer-email: twplatformlabs@gmail.com
       committer-name: twplatformlabs-sa
+      before-release: "true"

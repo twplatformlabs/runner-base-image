@@ -26,6 +26,8 @@ runs:
         DOCKER_LOGIN: op://platform/svc-github/username
         DOCKER_PASSWORD: op://platform/svc-github/access-token
         COSIGN_PASSWORD: op://platform/svc-cosign/passphrase
+        APP_ID: op://platform/svc-github-apps/app-id
+        PRIVATE_KEY: op://platform/svc-github-apps/private-key
 
     - name: Set signing key files
       shell: bash
