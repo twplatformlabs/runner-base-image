@@ -6,6 +6,7 @@ name: monthly update release
 on:
   schedule:
     - cron: '0 1 5 * *'  # monthly on the 5th
+  workflow_dispatch:
 
 permissions:
   contents: write
