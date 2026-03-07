@@ -23,8 +23,6 @@ jobs:
     with:
       before-build: "true"
       registry: ghcr.io
-      skip-hadolint: "false"
-      # skip-cve-scan: "true"
       bats-test: "true"
       bats-test-path: "test/runner-base-image.bats"
     secrets:
