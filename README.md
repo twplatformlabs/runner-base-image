@@ -10,7 +10,6 @@
 
 PSK GitHub runner convenience images demonstrating pre-configured runners. As the name suggests, this image is designed to serve as a base image for building a use-tailored private GitHub workflow Runners.
 
-
 This image contains the recommended base image, the required packages to function as a container Runner for GitHub workflows, along with a handful of other packages that are basically the universal things needed for running shared GitHub workflows. Enterprise settings also common require specific kinds of security configuratiaon or testing.
 
 What are those other packages? Here are some common examples:
